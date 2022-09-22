@@ -16,6 +16,7 @@ function getComputerChoice() {
 
 function decision() {let userChoice = prompt("Rock, paper or scissors?");
 console.log(userChoice)
+return userChoice
 }
 
 function playGame(userChoice, pcChoice) {
@@ -27,12 +28,22 @@ function playGame(userChoice, pcChoice) {
         console.log("You win!");
     } else {console.log("undefff")}
 }
- 
+
 userChoice = decision()
 pcChoice = getComputerChoice()
 console.log(`"Your opponent chose ${pcChoice}"`)
+console.log(`"You chose ${userChoice}"`)
 
-playGame(userChoice, pcChoice)
+function fiveRounds() {
+    for (let i = 0; i <5; i++) {
+        decision();
+        getComputerChoice();
+        playGame(userChoice, pcChoice)
+    }
+}
+
+fiveRounds(userChoice, pcChoice)
+
 // playGame()
 // win if :
 // playerChoice is rock vs scissors
