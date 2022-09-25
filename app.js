@@ -75,12 +75,12 @@
 // playerChoice is paper vs rock
 // playerChoice is scissors vs paper
 
-let x = "You win!"
-let y = "You lose.."
-let z = "Draw!"
+// let x = "You win!"
+// let y = "You lose.."
+// let z = "Draw!"
 
-let playerScore = 0
-let computerScore = 0
+// let playerScore = 0
+// let computerScore = 0
 
 let computerChoice
 let playerChoice
@@ -107,16 +107,17 @@ function generateComputerChoice() {
 function askUserChoice() {
     return userChoice = prompt("rock, paper or scissors?")
 }
-generateComputerChoice()
-askUserChoice()
-console.log(computerChoice)
-console.log(userChoice)
+// generateComputerChoice()
+// askUserChoice()
+// console.log(computerChoice)
+// console.log(userChoice)
 let result
 function decideWinner () {
     if (computerChoice === userChoice) {
         return result =  "draw"
     } if (userChoice === "rock" && computerChoice === "scissors") {
         return result = "win"
+        
     } if (userChoice === "rock" && computerChoice === "paper") {
         return result ="lose"
     } if (userChoice ==="scissors" && computerChoice === "paper") {
@@ -125,3 +126,37 @@ function decideWinner () {
         return result ="lose"
     }
 }
+let score = 0
+let compScore = 0
+function tallyScore() {
+    if (result === "win") {score ++}
+    if (result === "lose") {compScore++}
+
+}
+function playGame() {
+    generateComputerChoice()
+    console.log(`"Computer has chosen ${computerChoice}"`)
+    askUserChoice()
+    console.log(`"You chose ${userChoice}"`)
+    decideWinner()
+    console.log(`"You ${result}"`)
+    tallyScore()
+    console.log(`"You: ${score} PC: ${compScore}"`)
+
+}
+
+
+function fiveRounds() {
+    for (i=0;i<6;i++) {
+        playGame()
+    }
+}
+
+
+function bestOfFive () {
+    while (score< 3 && compScore< 3) {
+        playGame()
+    }
+}
+
+bestOfFive()
