@@ -1,16 +1,39 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="styles.css">
-   
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="styles.css" />
+    <script type="text/javascript" src="app.js" defer></script>
     <title>Document</title>
-</head>
-<body>
-    /*External JavaScript*/
-   <script type="text/javascript" src="app.js"></script>
-     
-</body>
+  </head>
+  <body>
+    <div class="title">
+      <h1>Rock Paper Scissors</h1>
+    </div>
+    <div class="game-container">
+      <div class="btn-container">
+        <button id="btn" class="rock-btn">
+          <img src="./images/rock.png" width="150" />
+        </button>
+        <button id="btn" class="paper-btn">
+          <img src="./images/paper.png" width="150" />
+        </button>
+        <button id="btn" class="scissors-btn">
+          <img src="./images/scissors.png" width="150" />
+        </button>
+      </div>
+      <div class="result-container">
+        <div class="scores">
+          <div class="player-score">{player-score}</div>
+          <div clas="score-dash">-</div>
+          <div class="computer-score">{computer-score}</div>
+        </div>
+        <div class="current-result">
+          {current-result} Paper Vs rock. You Win!
+        </div>
+      </div>
+    </div>
+  </body>
 </html>
