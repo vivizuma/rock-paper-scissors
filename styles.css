@@ -26,20 +26,27 @@ html {
 }
 
 body{
-background-color:#7ebdc2;
+background-color:#3b3332;
 color:#BB4430;
 }
 
 #btn {
-    background-color:#231f2046;
+    
     border-width:0.2rem;
     border-radius:1.5rem;
 
 }
 
+button:hover {
+   background-color:yellow;
+   transition: 0.05s;
+   border-radius:10rem;
+}
 button {
     border:none;
-    background-color:none
+    background-color:black;
+    transition-duration:0.4s;
+
 }
 
 .btn-container {
@@ -55,4 +62,10 @@ button {
     border-bottom-left-radius:2rem;
     padding:2rem;
 
+}
+
+
+
+.scores{
+    font-size:34px;
 }

@@ -1,5 +1,5 @@
-let computerChoice;
-let playerChoice;
+let computerChoice = "";
+let playerChoice = "";
 
 //generate computer choice
 //ask user for choice
@@ -7,17 +7,26 @@ let playerChoice;
 //play game five times
 
 //set up buttons for game
-
 const rockPress = document.querySelector(".rock-btn");
+rockPress.addEventListener("click", () => {
+  playerChoice = "rock";
+  playGame();
+});
 const paperPress = document.querySelector(".paper-btn");
+paperPress.addEventListener("click", () => {
+  playerChoice = "paper";
+  playGame();
+  console.log("click paper");
+});
 const scissorsPress = document.querySelector(".scissors-btn");
-rockPress.onclick = () => {
-  return playerChoice = "rock";
-};
-console.log(rockPress.onclick);
+scissorsPress.addEventListener("click", () => {
+  playerChoice = "scissors";
+  playGame();
+  console.log("click scissors");
+});
+
 console.log(playerChoice);
-paperPress.onclick = () => alert("paper");
-scissorsPress.onclick = () => alert("scissors");
+console.log(playerChoice);
 
 function generateComputerChoice() {
   const randomNumber = Math.floor(Math.random() * 3) + 1;
@@ -39,22 +48,29 @@ const userSelect = () => {};
 // console.log(userChoice)
 let result;
 function decideWinner() {
-  if (computerChoice === userChoice) {
+  if (computerChoice === playerChoice) {
     return (result = "draw");
   }
-  if (userChoice === "rock" && computerChoice === "scissors") {
+  if (playerChoice === "rock" && computerChoice === "scissors") {
     return (result = "win");
   }
-  if (userChoice === "rock" && computerChoice === "paper") {
+  if (playerChoice === "rock" && computerChoice === "paper") {
     return (result = "lose");
   }
-  if (userChoice === "scissors" && computerChoice === "paper") {
+  if (playerChoice === "scissors" && computerChoice === "paper") {
     return (result = "win");
   }
-  if (userChoice === "scissors" && computerChoice === "rock") {
+  if (playerChoice === "scissors" && computerChoice === "rock") {
+    return (result = "lose");
+  }
+  if (playerChoice === "paper" && computerChoice === "rock") {
+    return (result = "win");
+  }
+  if (playerChoice === "paper" && computerChoice === "scissors") {
     return (result = "lose");
   }
 }
+
 let score = 0;
 let compScore = 0;
 function tallyScore() {
@@ -65,17 +81,43 @@ function tallyScore() {
     compScore++;
   }
 }
-function playGame() {
-  generateComputerChoice();
-  console.log(`"Computer has chosen ${computerChoice}"`);
-  askUserChoice();
-  console.log(`"You chose ${userChoice}"`);
-  decideWinner();
-  console.log(`"You ${result}"`);
-  tallyScore();
-  console.log(`"You: ${score} PC: ${compScore}"`);
+function generateScoreHTML() {
+  const scoreDisplay = document.querySelector(".player-score");
+
+  scoreDisplay.innerHTML = `${score}`;
+
+  const compScoreDisplay = document.querySelector(".computer-score");
+  compScoreDisplay.innerHTML = `${compScore}`;
+}
+function generateCurrentResultHTML() {
+  let resultDisplay = document.querySelector(".current-result");
+  if (result === "draw") {
+    resultDisplay.innerHTML = `Draw!`;
+  } else {
+    resultDisplay.innerHTML = `You ${result}!`;
+  }
+}
+function generateCombatLogHTML() {
+  let combatLog = document.querySelector(".combat-log");
+  combatLog.innerHTML = `${playerChoice} vs ${computerChoice}`;
 }
 
+function playGame() {
+  //this function is invoked when the player clicks their choice
+  console.log(`"You chose ${playerChoice}"`);
+  //generate computer choice
+  generateComputerChoice();
+  console.log(`"Computer has chosen ${computerChoice}"`);
+  decideWinner();
+
+  console.log(`"You ${result}"`);
+  //tally score and display
+  tallyScore();
+  console.log(`"You: ${score} PC: ${compScore}"`);
+  generateScoreHTML();
+  generateCurrentResultHTML();
+  generateCombatLogHTML();
+}
 // function fiveRounds() {
 //     for (i=0;i<6;i++) {
 //         playGame()
