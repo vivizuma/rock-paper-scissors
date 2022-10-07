@@ -102,6 +102,28 @@ function generateCombatLogHTML() {
   combatLog.innerHTML = `${playerChoice} vs ${computerChoice}`;
 }
 
+function firstToFive() {
+  if (score === 5 || compScore === 5) {
+    const span = document.getElementsByClassName("close")[0];
+
+    const modal = document.getElementById("hit-five-modal");
+    modal.style.display = "block";
+    const modalContent = document.querySelector(".result-message");
+    if (score === 5) {
+      modalContent.innerHTML = `You win!`;
+    }
+    if (compScore === 5) {
+      modalContent.innerHTML = `You lose..`;
+    }
+    span.onclick = function () {
+      modal.style.display = "none";
+      location.reload();
+    };
+    score = 0;
+    compScore = 0;
+  }
+}
+
 function playGame() {
   //this function is invoked when the player clicks their choice
   console.log(`"You chose ${playerChoice}"`);
@@ -117,7 +139,9 @@ function playGame() {
   generateScoreHTML();
   generateCurrentResultHTML();
   generateCombatLogHTML();
+  firstToFive();
 }
+
 // function fiveRounds() {
 //     for (i=0;i<6;i++) {
 //         playGame()
